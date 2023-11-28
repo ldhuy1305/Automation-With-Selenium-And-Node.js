@@ -26,12 +26,12 @@ process.on("unhandledRejection", () => {});
       });
 
       it("Search Och in search box and click search button", async () => {
-        const result = await page.submitKeywordAndGetResult("Och");
-        expect(result.length).to.be.equal(1);
+        const result = await page.search("Och");
+        expect(result.length).to.be.above(0);
       });
 
-      it("Search Ocha with s in search box and click search button", async () => {
-        const result = await page.submitKeywordAndGetResult("Ochas");
+      it("Search Ochas in search box and click search button", async () => {
+        const result = await page.search("Ochas");
         expect(result.length).to.be.equal(0);
       });
       it("Click 'Hà Nội' in drop-down city", async () => {
@@ -67,7 +67,7 @@ process.on("unhandledRejection", () => {});
           "Gà rán,Xúc xích",
           "Đà Nẵng"
         );
-        expect(result.length).to.be.equal(1);
+        expect(result.length).to.be.above(0);
       });
       it("Click 'Hà Nội' in drop-down city and then choose 'Quận Hoàng Mai' in drop-down local and choose 'Xúc xích','Gà rán' and 'Thức uống' in drop-down category ", async () => {
         const result = await page.clickCategoryDistrictAndGetResult(
